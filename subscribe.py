@@ -6,7 +6,21 @@ login_url = base_url + 'login.do'
 logout_url = base_url + 'logout.do'
 mailalias_url = base_url + 'edit-alias.do'
 
+#TODO : Modularize the code
+
 def main():
+    '''
+    Algorithm
+    ---------
+    - Start a HTTP Session
+    - Initialize parameters for logging in to www.one.com
+    - Send a POST request with the params (This will log you into www.one.com)
+    - Send a GET request to get details of recipients of the mailing list
+    - Find the token value required for changing the mailing list members
+    - Find all recipients and add/remove recipients as needed
+    - Initialize the params and send a POST request to save the new list
+    - Logout from the session
+    '''
     s = requests.Session()
     payload = {'loginDomain':'true', 'targetDomain':'', 'loginTarget':''}
     payload['displayUsername'] = 'imsal.leuven@gmail.com'
